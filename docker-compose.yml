@@ -1,0 +1,36 @@
+services:
+  mlserver:
+    image: knitting-tf1:ready
+    container_name: knitting-tf1-server
+    ports:
+      - "8000:8000"
+    volumes:
+      - "${PWD}/ml_server:/app"
+      - "${PWD}/ml_server/experiment-real-milce:/app/experiment-real-milce"
+      - "${PWD}/ml_server/output:/tmp"
+
+    environment:
+      - CKPT_DIR=/app/experiment-real-milce/experiment-real-milce/_lr-0.0005_batch-2
+    command: uvicorn server:app --host 0.0.0.0 --port 8000 
+
+
+  backend:
+    build:
+      context: ./PlatinumDev.KnittingAIWebAPI
+      dockerfile: ./backend/Dockerfile 
+    container_name: knitting-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - ML_SERVER_URL=http://mlserver:8000
+    depends_on:
+      - mlserver
+
+  frontend:
+    build: ./PlatinumDev.KnittingAIWebAPI/frontend/knitting-mvp
+    container_name: knitting-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
