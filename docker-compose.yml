@@ -7,7 +7,7 @@ services:
     volumes:
       - "${PWD}/ml_server:/app"
       - "${PWD}/ml_server/experiment-real-milce:/app/experiment-real-milce"
-      - "${PWD}/ml_server/output:/tmp"
+      - ${PWD}/ml_server/output:/shared_output
 
     environment:
       - CKPT_DIR=/app/experiment-real-milce/experiment-real-milce/_lr-0.0005_batch-2
@@ -21,6 +21,8 @@ services:
     container_name: knitting-backend
     ports:
       - "8080:8080"
+    volumes:
+      - ${PWD}/ml_server/output:/shared_output
     environment:
       - ML_SERVER_URL=http://mlserver:8000
     depends_on:
