@@ -53,12 +53,11 @@ class Model(object):
             os.path.join(checkpoint_dir, model_name),
             global_step=global_step)
 
-    def load(self, checkpoint_dir, needed = False):
-
-        # count parameters
+    def load(self, checkpoint_dir, needed=False):
+    # count parameters
         param_count = 0
         for var in tf.global_variables():
-            if (re.search('generator', var.name) != None):
+            if re.search('generator', var.name) is not None:
                 shape = var.get_shape()
                 var_params = 1
                 for dim in shape:
@@ -66,36 +65,24 @@ class Model(object):
                 param_count += var_params
         print('Generator variables: %d' % param_count)
 
-        # temporary
-        if 0:
-            select_vars = [
-                var for var in tf.global_variables()
-                if (re.search("generator", var.name) != None)
-            ]
+    # сохраняем все переменные
+        self.saver = tf.train.Saver(max_to_keep=5)
 
-            for var in select_vars:
-                print(var.name + '\n')
+    # жёсткий путь до чекпоинтов
+        hard_checkpoint_dir = "/app/experiment-real-milce/experiment-real-milce/_lr-0.0005_batch-2"
+        print(" [*] Loading checkpoints from:", hard_checkpoint_dir)
 
-            self.saver = tf.train.Saver(var_list=select_vars, max_to_keep=5)
-        else:
-            self.saver = tf.train.Saver(max_to_keep=5)
-
-        print(" [*] Loading checkpoints...")
-        if needed:
-            model_dir = self.find_model_dir(checkpoint_dir)
-        else:
-            model_dir = self.get_model_dir()
-        checkpoint_dir = os.path.join(checkpoint_dir, model_dir)
-        ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
+        ckpt = tf.train.get_checkpoint_state(hard_checkpoint_dir)
         if ckpt and ckpt.model_checkpoint_path:
-            print(ckpt.model_checkpoint_path)
             ckpt_name = os.path.basename(ckpt.model_checkpoint_path)
             self.saver.restore(self.sess,
-                               os.path.join(checkpoint_dir, ckpt_name))
+                               os.path.join(hard_checkpoint_dir, ckpt_name))
             print(" [*] Load SUCCESS")
             return True
         else:
             print(" [!] Load failed...")
             if needed:
-                raise FileNotFoundError(checkpoint_dir)
+                raise FileNotFoundError(hard_checkpoint_dir)
             return False
+
+
