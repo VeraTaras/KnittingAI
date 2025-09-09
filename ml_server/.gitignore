@@ -4,7 +4,6 @@ ckpt*
 log*/
 chpt/
 data/
-checkpoint
 _checkpoint
 env
 old
