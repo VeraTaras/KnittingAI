@@ -1,7 +1,8 @@
 services:
   mlserver:
-    image: knitting-tf1:ready
-    container_name: knitting-tf1-server
+    build:
+      context: ./ml_server
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     volumes:
