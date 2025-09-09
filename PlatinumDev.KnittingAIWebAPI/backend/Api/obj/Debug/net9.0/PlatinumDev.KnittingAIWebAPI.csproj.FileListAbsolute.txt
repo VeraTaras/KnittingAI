@@ -1,0 +1,66 @@
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.csproj.AssemblyReference.cache
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.AssemblyInfoInputs.cache
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.AssemblyInfo.cs
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.csproj.CoreCompileInputs.cache
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.sourcelink.json
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.staticwebassets.endpoints.json
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.exe
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.deps.json
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.runtimeconfig.json
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.dll
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.pdb
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\Microsoft.OpenApi.dll
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\rjimswa.dswa.cache.json
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\scopedcss\bundle\PlatinumDev.KnittingAIWebAPI.styles.css
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\staticwebassets.build.json
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\staticwebassets.build.json.cache
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\staticwebassets.development.json
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\Platinum.244D4C99.Up2Date
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.dll
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\refint\PlatinumDev.KnittingAIWebAPI.dll
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.pdb
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.genruntimeconfig.cache
+D:\Дипломный проект\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\ref\PlatinumDev.KnittingAIWebAPI.dll
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.staticwebassets.endpoints.json
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.exe
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.deps.json
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.runtimeconfig.json
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.dll
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.pdb
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\Microsoft.OpenApi.dll
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.csproj.AssemblyReference.cache
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.AssemblyInfoInputs.cache
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.AssemblyInfo.cs
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.csproj.CoreCompileInputs.cache
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.sourcelink.json
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\rjimswa.dswa.cache.json
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\scopedcss\bundle\PlatinumDev.KnittingAIWebAPI.styles.css
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\staticwebassets.build.json
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\staticwebassets.build.json.cache
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\staticwebassets.development.json
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\Platinum.244D4C99.Up2Date
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.dll
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\refint\PlatinumDev.KnittingAIWebAPI.dll
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.pdb
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\PlatinumDev.KnittingAIWebAPI.genruntimeconfig.cache
+D:\KnittingAI\PlatinumDev.KnittingAIWebAPI\backend\Api\obj\Debug\net9.0\ref\PlatinumDev.KnittingAIWebAPI.dll
