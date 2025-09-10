@@ -54,6 +54,8 @@ Po uruchomieniu:
 
 - **ML Server**: http://localhost:8000
 
+---
+
 ### 3. Przygotowanie skryptów
 
 Przed uruchomieniem należy upewnić się, że plik `infer.sh` ma poprawny format i prawa do wykonywania.  
@@ -65,7 +67,7 @@ chmod +x infer.sh
 ```
 ---
 
-### 3. Użycie
+### 4. Użycie
 1. Otworzenie http://localhost:3000.
 
 2. Przesłanie zdjęcia fragmentu wzoru dziewiarskiego o wymiarach 160 x 160 (.png lub .jpg). Można wybrać spośród zdjęć w folderze ml_server\images
@@ -77,4 +79,5 @@ chmod +x infer.sh
 5. Backend skopiuje PNG do wwwroot/results/{projectId}/.
 
 6. Frontend wyświetli oryginalny obraz i wynik. Wynik też można będzie znaleźć w folderze ml_server\output
+
 
