@@ -28,7 +28,6 @@ function App() {
     formData.append("file", file);
 
     try {
-      // Używamy ścieżki względnej — proxy z package.json
       const response = await fetch("/projects", {
         method: "POST",
         body: formData,
@@ -41,15 +40,10 @@ function App() {
       const data = await response.json();
       console.log("Odpowiedź z backendu:", data);
 
-      // Tworzymy pełny URL do PNG
-      const pngUrl = data.imageUrl.startsWith("http")
-        ? data.imageUrl
-        : `${window.location.origin}${data.imageUrl}`;
-
       setResult({
         pngUrl: data.imageUrl.startsWith("http")
           ? data.imageUrl
-          : `http://localhost:8080${data.imageUrl}`, // teraz URL prowadzi do backendu
+          : `http://localhost:8080${data.imageUrl}`,
         svgData: "w fazie rozwoju",
       });
     } catch (err) {
@@ -74,14 +68,34 @@ function App() {
           textAlign: "center",
         }}
       >
-        {file ? file.name : "Przeciągnij plik tutaj lub wybierz przez przycisk"}
+        {file ? file.name : "Przeciągnij plik tutaj"}
       </div>
 
-      <input type="file" onChange={handleFileChange} />
+      <label
+        htmlFor="fileInput"
+        style={{
+          display: "inline-block",
+          padding: "10px 20px",
+          backgroundColor: "#007bff",
+          color: "white",
+          borderRadius: "4px",
+          cursor: "pointer",
+          marginRight: "10px",
+        }}
+      >
+        Wybierz plik
+      </label>
+      <input
+        id="fileInput"
+        type="file"
+        onChange={handleFileChange}
+        style={{ display: "none" }}
+      />
+
       <button
         onClick={handleUpload}
         disabled={!file || loading}
-        style={{ marginLeft: "10px" }}
+        style={{ padding: "10px 20px", cursor: "pointer" }}
       >
         Załaduj
       </button>
