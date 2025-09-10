@@ -4,7 +4,7 @@ using PlatinumDev.KnittingAIWebAPI.Domain;
 namespace PlatinumDev.KnittingAIWebAPI.Infrastructure;
 
 /// <summary>
-/// Простое потокобезопасное хранилище проектов в памяти — подходит для MVP.
+/// Proste, bezpieczne dla wątków repozytorium projektów w pamięci — odpowiednie dla MVP.
 /// </summary>
 public class InMemoryProjectRepository : IProjectRepository
 {

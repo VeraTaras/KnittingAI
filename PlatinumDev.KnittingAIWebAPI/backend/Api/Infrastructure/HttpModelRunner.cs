@@ -5,9 +5,9 @@ using PlatinumDev.KnittingAIWebAPI.Domain;
 namespace PlatinumDev.KnittingAIWebAPI.Infrastructure;
 
 /// <summary>
-/// Реализация IModelRunner, вызывающая внешний AI‑сервис (FastAPI) по HTTP.
-/// Ожидается эндпоинт: POST /infer (multipart/form-data)
-/// Ответ (пример):
+/// Implementacja IModelRunner, która wywołuje zewnętrzny serwis AI (FastAPI) przez HTTP.
+/// Oczekiwany endpoint: POST /infer (multipart/form-data)
+/// Przykładowa odpowiedź:
 /// { "output_path": "/app/output/input-123.png", "confidence": 0.93, "extra": { ... } }
 /// </summary>
 public class HttpModelRunner : IModelRunner
@@ -28,14 +28,14 @@ public class HttpModelRunner : IModelRunner
         fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
         content.Add(fileContent, "file", "upload.jpg");
 
-        // Выполняем запрос синхронно (для простоты MVP).
-        // В продакшене стоит сделать интерфейс асинхронным.
+        // Wykonujemy żądanie synchronicznie (dla prostoty MVP).
+        // W produkcji warto zrobić interfejs asynchroniczny.
         var response = client.PostAsync("/infer", content).GetAwaiter().GetResult();
         response.EnsureSuccessStatusCode();
 
         var payload = response.Content.ReadFromJsonAsync<InferResponse>()
             .GetAwaiter().GetResult()
-            ?? throw new InvalidOperationException("Empty model response");
+            ?? throw new InvalidOperationException("Pusta odpowiedź modelu");
 
         return new ModelOutputData(
             OutputPath: payload.output_path,

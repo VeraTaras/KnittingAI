@@ -5,7 +5,7 @@ using PlatinumDev.KnittingAIWebAPI.Domain.Schemes;
 namespace PlatinumDev.KnittingAIWebAPI.Domain;
 
 /// <summary>
-/// Проект вязания: имя + различные представления схем.
+/// Projekt robótki na drutach: nazwa + różne diagramy.
 /// </summary>
 public class KnittingProject
 {

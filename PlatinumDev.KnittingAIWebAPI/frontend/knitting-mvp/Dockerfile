@@ -1,4 +1,4 @@
-# Stage 1: сборка React
+# Stage 1: budowanie React
 FROM node:22 AS build
 WORKDIR /app
 COPY package*.json ./

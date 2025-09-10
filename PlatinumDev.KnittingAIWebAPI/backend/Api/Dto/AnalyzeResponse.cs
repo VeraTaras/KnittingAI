@@ -4,8 +4,8 @@ using PlatinumDev.KnittingAIWebAPI.Domain.Schemes;
 namespace PlatinumDev.KnittingAIWebAPI.Dto;
 
 /// <summary>
-/// Ответ на запрос анализа изображения.
-/// Содержит «сырые» данные от модели и сгенерированные схемы.
+/// Odpowiedź na żądanie analizy obrazu.
+/// Zawiera „surowe” dane z modelu oraz wygenerowane schematy.
 /// </summary>
 public record AnalyzeResponse(
     ModelOutputData ModelData,

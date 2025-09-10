@@ -1,7 +1,7 @@
 namespace PlatinumDev.KnittingAIWebAPI.Domain.Schemes;
 
 /// <summary>
-/// Пиксельная/растровая схема (превью, экспорт в PNG и т.п.).
+/// Schemat pikseli/rastrów (podgląd, eksport PNG, itd.).
 /// </summary>
 public class PixelKnittingScheme : IScheme
 {

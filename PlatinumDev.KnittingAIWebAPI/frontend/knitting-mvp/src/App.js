@@ -5,11 +5,13 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState({ pngUrl: "", svgData: "" });
 
+  // Obsługa zmiany pliku przez input
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) setFile(selectedFile);
   };
 
+  // Obsługa przeciągania pliku
   const handleDrop = (e) => {
     e.preventDefault();
     const droppedFile = e.dataTransfer.files[0];
@@ -26,33 +28,33 @@ function App() {
     formData.append("file", file);
 
     try {
-      // Используем относительный путь — прокси из package.json
+      // Używamy ścieżki względnej — proxy z package.json
       const response = await fetch("/projects", {
         method: "POST",
         body: formData,
       });
 
       if (!response.ok) {
-        throw new Error(`Ошибка запроса: ${response.status}`);
+        throw new Error(`Błąd żądania: ${response.status}`);
       }
 
       const data = await response.json();
-      console.log("Ответ от backend:", data);
+      console.log("Odpowiedź z backendu:", data);
 
-      // Формируем полный URL PNG
+      // Tworzymy pełny URL do PNG
       const pngUrl = data.imageUrl.startsWith("http")
         ? data.imageUrl
         : `${window.location.origin}${data.imageUrl}`;
 
       setResult({
-      pngUrl: data.imageUrl.startsWith("http")
-        ? data.imageUrl
-        : `http://localhost:8080${data.imageUrl}`, // теперь URL ведет на backend
-      svgData: "w fazie rozwoju",
-    });
+        pngUrl: data.imageUrl.startsWith("http")
+          ? data.imageUrl
+          : `http://localhost:8080${data.imageUrl}`, // teraz URL prowadzi do backendu
+        svgData: "w fazie rozwoju",
+      });
     } catch (err) {
       console.error(err);
-      alert("Ошибка при обработке файла");
+      alert("Błąd podczas przetwarzania pliku");
     } finally {
       setLoading(false);
     }
@@ -72,7 +74,7 @@ function App() {
           textAlign: "center",
         }}
       >
-        {file ? file.name : "Перетащите файл сюда или выберите через кнопку"}
+        {file ? file.name : "Przeciągnij plik tutaj lub wybierz przez przycisk"}
       </div>
 
       <input type="file" onChange={handleFileChange} />
@@ -81,34 +83,34 @@ function App() {
         disabled={!file || loading}
         style={{ marginLeft: "10px" }}
       >
-        Загрузить
+        Załaduj
       </button>
 
-      {loading && <div style={{ marginTop: "10px" }}>⏳ Обработка...</div>}
+      {loading && <div style={{ marginTop: "10px" }}>⏳ Przetwarzanie...</div>}
 
       {result.pngUrl && (
         <div style={{ marginTop: "20px" }}>
-          <h3>Результаты</h3>
+          <h3>Wyniki</h3>
           <div>
-            <strong>Исходное изображение:</strong>
+            <strong>Obraz źródłowy:</strong>
             <br />
             <img
               src={URL.createObjectURL(file)}
-              alt="Original"
+              alt="Oryginał"
               style={{ maxWidth: "100%" }}
             />
           </div>
           <div>
-            <strong>PNG из backend:</strong>
+            <strong>PNG z backendu:</strong>
             <br />
             <img
               src={result.pngUrl}
-              alt="PNG Result"
+              alt="Wynik PNG"
               style={{ maxWidth: "100%" }}
             />
           </div>
           <div>
-            <strong>SVG результат:</strong>
+            <strong>Wynik SVG:</strong>
             <div
               dangerouslySetInnerHTML={{ __html: result.svgData }}
               style={{ border: "1px solid #ccc", padding: "10px" }}

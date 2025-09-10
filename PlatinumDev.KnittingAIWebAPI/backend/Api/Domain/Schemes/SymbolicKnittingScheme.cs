@@ -1,12 +1,12 @@
 namespace PlatinumDev.KnittingAIWebAPI.Domain.Schemes;
 
 /// <summary>
-/// Символьная (условные обозначения) схема. Удобно хранить как SVG.
+/// Schemat symboliczny (oznaczenia graficzne). Wygodnie przechowywać jako SVG.
 /// </summary>
 public class SymbolicKnittingScheme : IScheme
 {
     /// <summary>
-    /// Содержимое SVG (или другой векторный формат).
+    /// Zawartość SVG (lub inny format wektorowy).
     /// </summary>
     public string? SvgData { get; set; }
 }

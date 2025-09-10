@@ -4,13 +4,13 @@ using PlatinumDev.KnittingAIWebAPI.Domain;
 namespace PlatinumDev.KnittingAIWebAPI.Infrastructure;
 
 /// <summary>
-/// Контракт запуска AI‑модели.
-/// Инфраструктурные реализации (HTTP/Docker и т.п.) должны его реализовать.
+/// Kontrakt uruchamiania modelu AI.
+/// Implementacje infrastrukturalne (HTTP/Docker itp.) muszą go zaimplementować.
 /// </summary>
 public interface IModelRunner
 {
     /// <summary>
-    /// Запускает модель, передавая поток изображения, и возвращает данные результата.
+    /// Uruchamia model, przekazując strumień obrazu, i zwraca dane wyniku.
     /// </summary>
     ModelOutputData RunModel(Stream image);
 }

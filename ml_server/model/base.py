@@ -65,10 +65,10 @@ class Model(object):
                 param_count += var_params
         print('Generator variables: %d' % param_count)
 
-    # сохраняем все переменные
+    # zapis wszystkich zmiennych
         self.saver = tf.train.Saver(max_to_keep=5)
 
-    # жёсткий путь до чекпоинтов
+    # ścieżka do punktów kontrolnych
         hard_checkpoint_dir = "/app/experiment-real-milce/experiment-real-milce/_lr-0.0005_batch-2"
         print(" [*] Loading checkpoints from:", hard_checkpoint_dir)
 

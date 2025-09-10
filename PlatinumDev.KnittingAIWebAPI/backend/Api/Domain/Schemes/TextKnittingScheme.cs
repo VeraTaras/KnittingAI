@@ -1,7 +1,7 @@
 namespace PlatinumDev.KnittingAIWebAPI.Domain.Schemes;
 
 /// <summary>
-/// Текстовая схема/инструкция по вязанию.
+/// Schemat tekstowy/instrukcja robienia na drutach.
 /// </summary>
 public class TextKnittingScheme : IScheme
 {

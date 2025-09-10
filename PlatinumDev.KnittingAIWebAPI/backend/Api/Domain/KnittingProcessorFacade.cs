@@ -8,11 +8,11 @@ using PlatinumDev.KnittingAIWebAPI.Infrastructure;
 namespace PlatinumDev.KnittingAIWebAPI.Domain;
 
 /// <summary>
-/// Фасад, объединяющий шаги обработки:
-/// 1) запуск модели,
-/// 2) генерация схем,
-/// 3) сборка проекта,
-/// 4) сохранение/загрузка проектов.
+/// Fasada łącząca kroki przetwarzania:
+/// 1) uruchomienie modelu,
+/// 2) generowanie schematów,
+/// 3) składanie projektu,
+/// 4) zapis/odczyt projektów.
 /// </summary>
 public class KnittingProcessorFacade
 {
@@ -25,34 +25,34 @@ public class KnittingProcessorFacade
         _repo = repo;
     }
 
-    // 1. Запуск модели
+    // 1. Uruchomienie modelu
     public ModelOutputData AnalyzeImage(Stream image)
         => _modelRunner.RunModel(image);
 
-    // 2. Генерация схем (в реальном проекте подменишь фабрикой парсеров)
+    // 2. Generowanie schematów (w realnym projekcie zamienisz na fabrykę parserów)
     public List<IScheme> GenerateSchemes(ModelOutputData modelData)
     {
         var list = new List<IScheme>();
 
-        // Пример: простая текстовая «инструкция» на основе ответа модели
+        // Przykład: prosta tekstowa „instrukcja” na podstawie odpowiedzi modelu
         list.Add(new TextKnittingScheme
         {
             Content = $"Output: {modelData.OutputPath}, confidence={modelData.Confidence:0.###}"
         });
 
-        // Пример: символическая схема как SVG-заглушка (сюда можно подставить реальный SVG)
+        // Przykład: schemat symboliczny jako SVG-atrapa (tutaj można podstawić realne SVG)
         list.Add(new SymbolicKnittingScheme
         {
             SvgData = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text x=\"10\" y=\"50\">symbolic</text></svg>"
         });
 
-        // Пиксельную схему (PNG) можно добавлять по необходимости:
+        // Schemat pikselowy (PNG) można dodawać według potrzeb:
         // list.Add(new PixelKnittingScheme { PngBytes = ... });
 
         return list;
     }
 
-    // 3. Сборка проекта
+    // 3. Składanie projektu
     public KnittingProject AssembleProject(List<IScheme> schemes, string name)
     {
         return new KnittingProject
@@ -64,14 +64,14 @@ public class KnittingProcessorFacade
         };
     }
 
-    // 4. Сохранение/загрузка
+    // 4. Zapis/odczyt
     public void SaveProject(PlatinumDev.KnittingAIWebAPI.Domain.KnittingProject project) => _repo.Save(project);
     public PlatinumDev.KnittingAIWebAPI.Domain.KnittingProject? Load(Guid id) => _repo.Load(id);
     public IEnumerable<PlatinumDev.KnittingAIWebAPI.Domain.KnittingProject> GetAll() => _repo.GetAll();
 }
 
 /// <summary>
-/// Контракт запуска AI-модели. Инфраструктурные реализации (HTTP/Docker) должны его реализовать.
+/// Kontrakt uruchamiania modelu AI. Implementacje infrastrukturalne (HTTP/Docker) muszą go zaimplementować.
 /// </summary>
 public interface IModelRunner
 {
@@ -79,7 +79,7 @@ public interface IModelRunner
 }
 
 /// <summary>
-/// Контракт репозитория проектов. Можно иметь in-memory/БД реализации.
+/// Kontrakt repozytorium projektów. Można mieć implementacje in-memory / baza danych.
 /// </summary>
 public interface IProjectRepository
 {

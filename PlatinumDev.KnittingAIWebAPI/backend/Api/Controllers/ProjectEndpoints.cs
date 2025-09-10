@@ -17,42 +17,42 @@ public static class ProjectEndpoints
             {
                 try
                 {
-                    logger.LogInformation("📥 New project request at {time}", DateTime.UtcNow);
+                    logger.LogInformation("📥 Nowe żądanie projektu o {time}", DateTime.UtcNow);
 
                     if (file is null || file.Length == 0)
                     {
-                        logger.LogWarning("⚠️ No file received!");
-                        return Results.BadRequest("Missing file");
+                        logger.LogWarning("⚠️ Nie otrzymano pliku!");
+                        return Results.BadRequest("Brak pliku");
                     }
 
-                    logger.LogInformation("✅ File {filename} received, size {size} bytes", file.FileName, file.Length);
+                    logger.LogInformation("✅ Plik {filename} otrzymany, rozmiar {size} bajtów", file.FileName, file.Length);
 
                     name ??= $"Project-{DateTime.UtcNow:yyyyMMdd-HHmmss}";
 
                     await using var stream = file.OpenReadStream();
                     var modelData = facade.AnalyzeImage(stream);
-                    logger.LogInformation("🧠 Model analyzed");
+                    logger.LogInformation("🧠 Model przeanalizowany");
 
                     var schemes = facade.GenerateSchemes(modelData);
-                    logger.LogInformation("🪡 Schemes generated: {count}", schemes.Count);
+                    logger.LogInformation("🪡 Schematy wygenerowane: {count}", schemes.Count);
 
                     var project = facade.AssembleProject(schemes, name);
                     facade.SaveProject(project);
-                    logger.LogInformation("💾 Project saved with id {id}", project.Id);
+                    logger.LogInformation("💾 Projekt zapisany z id {id}", project.Id);
 
-                    // --- Ищем PNG в общей папке ---
+                    // --- Szukamy PNG w wspólnym folderze ---
                     var sharedDir = "/shared_output";
                     if (!Directory.Exists(sharedDir))
                     {
-                        logger.LogError("❌ Shared output folder not found: {path}", sharedDir);
-                        return Results.BadRequest("Output folder not found");
+                        logger.LogError("❌ Nie znaleziono wspólnego folderu wyjściowego: {path}", sharedDir);
+                        return Results.BadRequest("Nie znaleziono folderu wyjściowego");
                     }
 
                     var pngFiles = Directory.GetFiles(sharedDir, "*.png", SearchOption.AllDirectories);
                     if (pngFiles.Length == 0)
                     {
-                        logger.LogError("❌ No PNG files found in {path}", sharedDir);
-                        return Results.BadRequest("No output image found");
+                        logger.LogError("❌ Brak plików PNG w {path}", sharedDir);
+                        return Results.BadRequest("Nie znaleziono obrazu wyjściowego");
                     }
 
                     var latestPng = pngFiles
@@ -60,9 +60,9 @@ public static class ProjectEndpoints
                         .OrderByDescending(f => f.CreationTimeUtc)
                         .First();
 
-                    logger.LogInformation("🖼️ Found PNG: {file}", latestPng.FullName);
+                    logger.LogInformation("🖼️ Znaleziono PNG: {file}", latestPng.FullName);
 
-                    // --- Копируем в wwwroot/results/{projectId}/ ---
+                    // --- Kopiujemy do wwwroot/results/{projectId}/ ---
                     var resultsDir = Path.Combine(env.WebRootPath ?? "./wwwroot", "results", project.Id.ToString());
                     Directory.CreateDirectory(resultsDir);
 
@@ -70,14 +70,14 @@ public static class ProjectEndpoints
                     File.Copy(latestPng.FullName, finalFile, true);
 
                     var imageUrl = $"/results/{project.Id}/{latestPng.Name}";
-                    logger.LogInformation("🔗 Image available at {url}", imageUrl);
+                    logger.LogInformation("🔗 Obraz dostępny pod {url}", imageUrl);
 
                     return Results.Created($"/projects/{project.Id}", new ProjectCreated(project.Id, imageUrl));
                 }
                 catch (Exception ex)
                 {
-                    logger.LogError(ex, "❌ Error creating project");
-                    return Results.Problem("Internal server error: " + ex.Message);
+                    logger.LogError(ex, "❌ Błąd tworzenia projektu");
+                    return Results.Problem("Błąd serwera wewnętrznego: " + ex.Message);
                 }
             })
             .Accepts<IFormFile>("multipart/form-data")

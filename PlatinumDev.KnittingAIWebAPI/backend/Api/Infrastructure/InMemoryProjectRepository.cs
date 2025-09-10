@@ -3,7 +3,8 @@ using PlatinumDev.KnittingAIWebAPI.Domain;
 namespace PlatinumDev.KnittingAIWebAPI.Infrastructure;
 
 /// <summary>
-/// Контракт хранилища проектов. Можно иметь реализации: InMemory, EF Core, файл и т.п.
+/// Kontrakt repozytorium projektów. 
+/// Możliwe implementacje: InMemory, EF Core, plikowe itp.
 /// </summary>
 public interface IProjectRepository
 {

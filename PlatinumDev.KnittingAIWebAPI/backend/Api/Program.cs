@@ -4,29 +4,29 @@ using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
-var outputPath = Path.Combine("/tmp"); // теперь /tmp общая для ML и backend
+var outputPath = Path.Combine("/tmp"); // teraz /tmp wspólny dla ML i backendu
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// HttpClient для FastAPI (если нужен HttpModelRunner)
+// HttpClient dla FastAPI (jeśli potrzebny HttpModelRunner)
 builder.Services.AddHttpClient("ai", client =>
 {
     var baseUrl = builder.Configuration["ML_SERVER_URL"] ?? "http://mlserver:8000";
     client.BaseAddress = new Uri(baseUrl);
 });
 
-// DI: все интерфейсы из Infrastructure
+// DI: wszystkie interfejsy z Infrastructure
 builder.Services.AddSingleton<IProjectRepository, InMemoryProjectRepository>();
 
-// для разработки без FastAPI:
+// dla developmentu bez FastAPI:
 // builder.Services.AddScoped<IModelRunner, DummyModelRunner>();
 
-// для реальной интеграции (заменишь на):
+// dla realnej integracji (zamienisz na):
 builder.Services.AddScoped<IModelRunner, HttpModelRunner>();
 
-// фасада из Domain, но она зависит от интерфейсов Infrastructure
+// fasada z Domain, ale zależna od interfejsów z Infrastructure
 builder.Services.AddScoped<PlatinumDev.KnittingAIWebAPI.Domain.KnittingProcessorFacade>();
 
 var app = builder.Build();
@@ -48,11 +48,9 @@ app.UseSwaggerUI();
 app.MapGet("/", () => "Knitting MVP API (.NET 8, Minimal APIs)");
 app.MapGet("/health", () => Results.Ok(new { status = "ok" }));
 
-// Раздаём статику
+// Serwujemy pliki statyczne
 app.UseStaticFiles();
 
 app.MapProjectEndpoints();
 
 app.Run();
-
-

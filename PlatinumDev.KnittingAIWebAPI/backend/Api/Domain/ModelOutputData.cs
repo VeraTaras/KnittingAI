@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace PlatinumDev.KnittingAIWebAPI.Domain;
 
 /// <summary>
-/// Данные, возвращаемые сервисом AI/моделью после инференса.
+/// Dane zwracane przez serwis AI/model po inferencji.
 /// </summary>
 public record ModelOutputData(
     string OutputPath,

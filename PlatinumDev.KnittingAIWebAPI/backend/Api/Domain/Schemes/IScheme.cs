@@ -1,6 +1,6 @@
 namespace PlatinumDev.KnittingAIWebAPI.Domain.Schemes;
 
 /// <summary>
-/// Маркерный интерфейс для всех типов схем.
+/// Interfejs markerowy dla wszystkich typów schematów.
 /// </summary>
 public interface IScheme { }
