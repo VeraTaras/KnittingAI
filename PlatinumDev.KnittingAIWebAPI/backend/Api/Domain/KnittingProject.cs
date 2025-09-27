@@ -13,6 +13,8 @@ public class KnittingProject
 
     public string Name { get; set; } = default!;
 
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
     public string ImageUrl { get; set; } = string.Empty;
 
     public TextKnittingScheme? TextScheme { get; set; }

@@ -4,30 +4,36 @@ using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
-var outputPath = Path.Combine("/tmp"); // teraz /tmp wspólny dla ML i backendu
 
-// Swagger
+// --- Swagger ---
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Knitting AI API", Version = "v1" });
+});
 
-// HttpClient dla FastAPI (jeśli potrzebny HttpModelRunner)
+// --- HttpClient dla FastAPI (ML server) ---
 builder.Services.AddHttpClient("ai", client =>
 {
     var baseUrl = builder.Configuration["ML_SERVER_URL"] ?? "http://mlserver:8000";
     client.BaseAddress = new Uri(baseUrl);
 });
 
-// DI: wszystkie interfejsy z Infrastructure
+// --- Dependency Injection ---
 builder.Services.AddSingleton<IProjectRepository, InMemoryProjectRepository>();
-
-// dla developmentu bez FastAPI:
-// builder.Services.AddScoped<IModelRunner, DummyModelRunner>();
-
-// dla realnej integracji (zamienisz na):
 builder.Services.AddScoped<IModelRunner, HttpModelRunner>();
-
-// fasada z Domain, ale zależna od interfejsów z Infrastructure
 builder.Services.AddScoped<PlatinumDev.KnittingAIWebAPI.Domain.KnittingProcessorFacade>();
+
+// --- CORS ---
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -36,21 +42,18 @@ if (!Directory.Exists(app.Environment.WebRootPath))
     Directory.CreateDirectory(app.Environment.WebRootPath);
 }
 
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(app.Environment.WebRootPath),
-    RequestPath = ""
-});
+// --- Middleware ---
+app.UseCors("AllowFrontend");
+app.UseStaticFiles();
 
 app.UseSwagger();
 app.UseSwaggerUI();
 
+// --- Health и root ---
 app.MapGet("/", () => "Knitting MVP API (.NET 8, Minimal APIs)");
 app.MapGet("/health", () => Results.Ok(new { status = "ok" }));
 
-// Serwujemy pliki statyczne
-app.UseStaticFiles();
-
+// --- Endpointy проекта ---
 app.MapProjectEndpoints();
 
 app.Run();

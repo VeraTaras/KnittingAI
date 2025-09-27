@@ -9,11 +9,25 @@ namespace PlatinumDev.KnittingAIWebAPI.Infrastructure;
 public class InMemoryProjectRepository : IProjectRepository
 {
     private readonly ConcurrentDictionary<Guid, PlatinumDev.KnittingAIWebAPI.Domain.KnittingProject> _db = new();
+    private int _counter = 0;
 
-    public void Save(PlatinumDev.KnittingAIWebAPI.Domain.KnittingProject project) => _db[project.Id] = project;
+    public void Save(KnittingProject project)
+    {
+        _counter++;
+        project.Name = $"Projekt {_counter} ({DateTime.Now:yyyy-MM-dd HH:mm:ss})";
+        _db[project.Id] = project;
+    }
 
-    public PlatinumDev.KnittingAIWebAPI.Domain.KnittingProject? Load(Guid id) => _db.TryGetValue(id, out var p) ? p : null;
+    public KnittingProject? Load(Guid id)
+    {
+        _db.TryGetValue(id, out var project);
+        return project;
+    }
 
-    public IEnumerable<PlatinumDev.KnittingAIWebAPI.Domain.KnittingProject> GetAll()
-        => _db.Values.OrderByDescending(p => p.CreatedUtc);
+    public IEnumerable<KnittingProject> GetAll()
+    {
+        return _db.Values
+                        .OrderBy(p => p.CreatedAt) // сортировка по дате
+                        .ToList();
+    }
 }

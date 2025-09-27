@@ -65,9 +65,14 @@ public class KnittingProcessorFacade
     }
 
     // 4. Zapis/odczyt
-    public void SaveProject(PlatinumDev.KnittingAIWebAPI.Domain.KnittingProject project) => _repo.Save(project);
-    public PlatinumDev.KnittingAIWebAPI.Domain.KnittingProject? Load(Guid id) => _repo.Load(id);
-    public IEnumerable<PlatinumDev.KnittingAIWebAPI.Domain.KnittingProject> GetAll() => _repo.GetAll();
+    public void SaveProject(KnittingProject project)
+        => _repo.Save(project);
+
+    public KnittingProject? LoadProject(Guid id)
+        => _repo.Load(id);
+
+    public IEnumerable<KnittingProject> GetAllProjects()
+        => _repo.GetAll();
 }
 
 /// <summary>
