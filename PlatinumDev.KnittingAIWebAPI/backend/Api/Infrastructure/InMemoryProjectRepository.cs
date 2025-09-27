@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using PlatinumDev.KnittingAIWebAPI.Domain;
 
 namespace PlatinumDev.KnittingAIWebAPI.Infrastructure;
@@ -8,7 +9,12 @@ namespace PlatinumDev.KnittingAIWebAPI.Infrastructure;
 /// </summary>
 public interface IProjectRepository
 {
-    void Save(PlatinumDev.KnittingAIWebAPI.Domain.KnittingProject project);
-    PlatinumDev.KnittingAIWebAPI.Domain.KnittingProject? Load(Guid id);
-    IEnumerable<PlatinumDev.KnittingAIWebAPI.Domain.KnittingProject> GetAll();
+    public void Save(KnittingProject project) 
+        => _db[project.Id] = project;
+
+    public KnittingProject? Load(Guid id) 
+        => _db.TryGetValue(id, out var p) ? p : null;
+
+    public IEnumerable<KnittingProject> GetAll() 
+        => _db.Values.OrderByDescending(p => p.CreatedUtc);
 }
