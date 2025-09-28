@@ -4,17 +4,30 @@ using PlatinumDev.KnittingAIWebAPI.Domain;
 namespace PlatinumDev.KnittingAIWebAPI.Infrastructure;
 
 /// <summary>
-/// Kontrakt repozytorium projektów. 
-/// Możliwe implementacje: InMemory, EF Core, plikowe itp.
+/// Proste, bezpieczne dla wątków repozytorium projektów w pamięci — odpowiednie dla MVP.
 /// </summary>
-public interface IProjectRepository
+public class InMemoryProjectRepository : IProjectRepository
 {
-    public void Save(KnittingProject project) 
-        => _db[project.Id] = project;
+    private readonly ConcurrentDictionary<Guid, PlatinumDev.KnittingAIWebAPI.Domain.KnittingProject> _db = new();
+    private int _counter = 0;
 
-    public KnittingProject? Load(Guid id) 
-        => _db.TryGetValue(id, out var p) ? p : null;
+    public void Save(KnittingProject project)
+    {
+        _counter++;
+        project.Name = $"Projekt {_counter} ({DateTime.Now:yyyy-MM-dd HH:mm:ss})";
+        _db[project.Id] = project;
+    }
 
-    public IEnumerable<KnittingProject> GetAll() 
-        => _db.Values.OrderByDescending(p => p.CreatedUtc);
+    public KnittingProject? Load(Guid id)
+    {
+        _db.TryGetValue(id, out var project);
+        return project;
+    }
+
+    public IEnumerable<KnittingProject> GetAll()
+    {
+        return _db.Values
+                        .OrderBy(p => p.CreatedAt) // сортировка по дате
+                        .ToList();
+    }
 }

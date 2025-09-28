@@ -38,11 +38,6 @@ public static class ProjectEndpoints
                     var schemes = facade.GenerateSchemes(modelData);
                     logger.LogInformation("🪡 Schematy wygenerowane: {count}", schemes.Count);
 
-                    logger.LogInformation("➡️ Składam projekt");
-                    var project = facade.AssembleProject(schemes, name);
-                    facade.SaveProject(project);
-                    logger.LogInformation("💾 Projekt zapisany z id {id}", project.Id);
-
                     // --- Szukamy PNG w wspólnym folderze ---
                     var sharedDir = "/shared_output";
                     logger.LogInformation("📂 Szukam plików PNG w {dir}", sharedDir);
@@ -69,6 +64,9 @@ public static class ProjectEndpoints
 
                     logger.LogInformation("🖼️ Wybrano najnowszy PNG: {file}", latestPng.FullName);
 
+                    logger.LogInformation("➡️ Składam projekt");
+                    var project = facade.AssembleProject(schemes, name);
+
                     // --- Kopiujemy do wwwroot/results/{projectId}/ ---
                     var resultsDir = Path.Combine(env.WebRootPath ?? "./wwwroot", "results", project.Id.ToString());
                     logger.LogInformation("📂 Tworzę katalog wyników: {dir}", resultsDir);
@@ -80,6 +78,10 @@ public static class ProjectEndpoints
 
                     var imageUrl = $"/results/{project.Id}/{latestPng.Name}";
                     logger.LogInformation("🔗 Obraz dostępny pod adresem: {url}", imageUrl);
+                    
+                    project.ImageUrl = imageUrl;
+                    facade.SaveProject(project);
+                    logger.LogInformation("💾 Projekt zapisany z id {id}", project.Id);
 
                     return Results.Created($"/projects/{project.Id}", new ProjectCreated(project.Id, imageUrl));
                 }

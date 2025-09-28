@@ -192,13 +192,31 @@ function App() {
         </ul>
       </div>
 
-      {/* Sekcja wybranego projektu */}
-      {selectedProject && (
-        <div style={{ marginTop: "20px" }}>
-          <h3>📌 Wybrany projekt</h3>
-          <pre>{JSON.stringify(selectedProject, null, 2)}</pre>
-        </div>
-      )}
+       {/* Sekcja wybranego projektu */}
+{selectedProject && (
+  <div style={{ marginTop: "20px" }}>
+    <h3>📌 Wybrany projekt</h3>
+    <div>
+      <strong>Obraz projektu:</strong>
+      <br />
+      <img
+        src={
+          selectedProject.imageUrl.startsWith("http")
+            ? selectedProject.imageUrl
+            : `http://localhost:8080${selectedProject.imageUrl}`
+        }
+        alt={selectedProject.name}
+        style={{ maxWidth: "100%" }}
+      />
+    </div>
+    <div>
+      <strong>Nazwa:</strong> {selectedProject.name}
+      <br />
+      <strong>Data:</strong> {new Date(selectedProject.createdAt).toLocaleString()}
+    </div>
+  </div>
+)}
+
     </div>
   );
 }
