@@ -10,7 +10,12 @@ app = FastAPI()
 logging.basicConfig(level=logging.DEBUG)
 
 logging.debug(f"Aktualny katalog roboczy: {os.getcwd()}")
-logging.debug(f"Zawartość /app: {os.listdir('/app')}")
+
+
+if os.path.exists("/app"):
+    logging.debug(f"Zawartość /app: {os.listdir('/app')}")
+else:
+    logging.debug("Katalog /app nie istnieje (локально при тестах это нормально)")
 logging.debug(f"CKPT_DIR: {os.environ.get('CKPT_DIR')}")
 
 @app.get("/health")
