@@ -4,7 +4,7 @@
 Projekt składa się z **Frontendu (React)**, **Backendu (ASP.NET Core Web API)** oraz **ML Server (Python, FastAPI)**.  
 Komponenty komunikują się ze sobą za pomocą **Docker Compose**.
 
-![Interface preview](KnittingAI/interface.png)
+![Interface preview](interface.png)
 
 ---
 
@@ -83,6 +83,7 @@ chmod +x infer.sh
    - Frontend wyświetli zarówno obraz wejściowy, jak i wynik.
 
 5. Wynik można również znaleźć w folderze `ml_server/output`.
+
 
 
 
