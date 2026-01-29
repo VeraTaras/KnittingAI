@@ -4,8 +4,7 @@
 Projekt składa się z **Frontendu (React)**, **Backendu (ASP.NET Core Web API)** oraz **ML Server (Python, FastAPI)**.  
 Komponenty komunikują się ze sobą za pomocą **Docker Compose**.
 
-![Uploading image.png…]()
-
+![Interface preview](./images/interface.png)
 
 ---
 
@@ -84,5 +83,6 @@ chmod +x infer.sh
    - Frontend wyświetli zarówno obraz wejściowy, jak i wynik.
 
 5. Wynik można również znaleźć w folderze `ml_server/output`.
+
 
 
